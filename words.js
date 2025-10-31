@@ -1,0 +1,42 @@
+export const words = [
+  {
+    id: "01",
+    word: "挨拶",
+    wordPronunciation: "아이사쓰",
+    meaning: "인사",
+    example: "朝、近所の人に挨拶をしました。",
+    examplePronunciation: "아사, 킨조노 히토니 아이사쓰오 시마시타",
+  },
+  {
+    id: "02",
+    word: "勉強",
+    wordPronunciation: "벤쿄-",
+    meaning: "공부",
+    example: "毎日日本語を勉強しています。",
+    examplePronunciation: "마이니치 니혼고오 벤쿄- 시테이마스",
+  },
+  {
+    id: "03",
+    word: "美味しい",
+    wordPronunciation: "오이시-",
+    meaning: "맛있다",
+    example: "このケーキはとても美味しいです。",
+    examplePronunciation: "코노 케-키와 토테모 오이시-데스",
+  },
+  {
+    id: "04",
+    word: "駅",
+    wordPronunciation: "에키",
+    meaning: "역",
+    example: "駅で友達と待ち合わせしました。",
+    examplePronunciation: "에키데 토모다치토 마치아와세 시마시타",
+  },
+  {
+    id: "05",
+    word: "旅行",
+    wordPronunciation: "료코-",
+    meaning: "여행",
+    example: "夏休みに家族と旅行に行きます。",
+    examplePronunciation: "나츠야스미니 카조쿠토 료코-니 이키마스",
+  },
+];
