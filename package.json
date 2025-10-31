@@ -1,0 +1,12 @@
+{
+  "name": "japanese-wordbook",
+  "version": "1.0.0",
+  "description": "유튜브 영상 기반 일본어 단어장 데모",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "keywords": ["japanese", "wordbook", "study"],
+  "author": "",
+  "license": "MIT"
+}
