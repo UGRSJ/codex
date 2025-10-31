@@ -1,7 +1,69 @@
-echo "# codex" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/UGRSJ/codex.git
-git push -u origin main
+# 일본어 단어장 샘플
+
+유튜브 영상에서 추출한 단어 데이터를 시각적으로 정리하기 위한 정적 웹 페이지 예시입니다. 단어 카드에는 다음 정보가 포함됩니다.
+
+- 일본어 단어와 의미
+- 단어 및 예문의 한국식 발음(독음)
+- 단어를 클릭하거나 스피커 아이콘을 누르면 일본어 음성이 재생되는 기능
+- 예문 토글(예문 보기/숨기기)과 동시에 예문 음성 재생
+- 암기 횟수(5회)를 체크할 수 있는 메모리 트래커. 체크 정보는 브라우저 `localStorage`에 저장됩니다.
+
+## 실행 방법(비개발자용 초간단 안내)
+
+### 1. 압축 풀고 바로 실행하기(가장 쉬운 방법)
+1. 이 폴더 전체를 다운로드(또는 복사)해 컴퓨터에 저장합니다.
+2. `index.html` 파일을 더블 클릭합니다.
+3. 웹 브라우저(Chrome, Edge, Safari 등)에서 단어장이 바로 열립니다.
+
+> 💡 `words.js`에 들어 있는 단어들이 자동으로 표시됩니다. 인터넷 연결이 없어도 실행됩니다.
+
+### 2. 서버를 켠 뒤 접속하기(선택 사항)
+브라우저 정책 때문에 파일을 직접 열 수 없거나 음성 합성(Web Speech API)이 정상 동작하지 않을 때는 로컬 서버를 사용할 수 있습니다.
+
+1. **Node.js 설치**
+   - [https://nodejs.org](https://nodejs.org)에서 “LTS” 버전을 내려받아 설치합니다.
+   - 설치 마법사에서는 특별히 바꿀 내용 없이 “다음(Next)”만 눌러도 됩니다.
+2. **폴더 열기**
+   - Windows: 단어장 폴더 주소창에 `cmd`를 입력하고 Enter를 누르면 명령 프롬프트가 열립니다.
+   - macOS: Finder에서 폴더를 연 뒤 `터미널`을 실행하고, 폴더를 드래그하여 터미널 창에 떨어뜨립니다.
+3. **서버 실행**
+   ```bash
+   npm install   # 처음 한 번만 실행하면 됩니다.
+   npm start     # "Server running" 문구가 보이면 완료
+   ```
+4. 브라우저 주소창에 `http://localhost:3000`을 입력해 접속합니다.
+
+> 🔁 서버를 종료하려면 명령 창에서 `Ctrl + C`를 누르세요.
+
+포트를 바꾸고 싶다면 `PORT` 환경 변수를 지정한 뒤 `npm start`를 실행합니다.
+
+```bash
+PORT=8080 npm start
+```
+
+## 데이터 교체
+
+단어 데이터는 `words.js` 파일에서 관리됩니다. 다음 필드를 원하는 값으로 교체하면 됩니다.
+
+```js
+window.jpWordbookData = [
+  {
+    id: "01", // 고유 ID (localStorage 저장용)
+    word: "単語", // 일본어 단어
+    wordPronunciation: "탄고", // 한국식 발음
+    meaning: "단어", // 뜻(한국어)
+    example: "単語の例文です。", // 예문(일본어)
+    examplePronunciation: "탄고노 레분데스", // 예문의 한국식 발음
+  },
+];
+```
+
+## 음성 합성 주의 사항
+
+- Web Speech API 지원 여부는 브라우저마다 다릅니다. 일본어 음성이 없는 경우 기본 시스템 음성으로 재생될 수 있습니다.
+- 데스크톱 Chrome/Edge, Safari 등 최신 브라우저에서 테스트하는 것을 권장합니다.
+
+## 배포 아이디어
+
+- GitHub Pages 등에 정적 사이트로 배포할 수 있습니다.
+- 영상 처리 자동화를 위해서는 별도의 백엔드 스크립트(예: Python)에서 자막 → 단어 추출 → `words.js` 생성 과정을 자동화하면 됩니다.
